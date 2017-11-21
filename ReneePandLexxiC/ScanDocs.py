@@ -26,10 +26,10 @@ def test_hasXcode():
         print fmt.format(expected, actual)
 
 def getXcodePosition(inText):
-    "Tx6op3".find('T')
+    print inText.find('T')
 
 def test_getXcodePosition():
-      print getXcodePosition('Tx6op3')
+      getXcodePosition('0Tx6op3')
 
 if __name__ == '__main__':
     main()
