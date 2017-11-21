@@ -12,6 +12,7 @@ fmt = "Expected: {}\tActual  : {}"
 
 def main():
     test_hasXcode()
+    test_getXcodePosition()
 
 def hasXcode(inText):
     return "T" in inText
@@ -23,6 +24,12 @@ def test_hasXcode():
         print 'hasXcode(Tx6op3) passed'
     else:
         print fmt.format(expected, actual)
+
+def getXcodePosition(inText):
+    "Tx6op3".find('T')
+
+def test_getXcodePosition():
+      print getXcodePosition('Tx6op3')
 
 if __name__ == '__main__':
     main()
