@@ -2,8 +2,8 @@
 fmt = "Expected: {}\tActual  : {}"
 
 def main():
-## test_hasXcode()
-## test_getXcodePosition()
+ test_hasXcode()
+ test_getXcodePosition()
  test_getPatternPosition()
 
 #Exercise one - function one
@@ -21,12 +21,12 @@ def test_hasXcode():
 #Excercise Two - Function 2
 
 def getXcodePosition(inText):
-    return inText.find('b')
+    return inText.find('T')
 
 def test_getXcodePosition():
     #Pattern does not exist
     expected = 1
-    actual = getXcodePosition('Tx6op3')
+    actual = getXcodePosition('asdfghjTx6op3')
     if expected == actual:
         print 'Passed: getXcodePosition is at 1'
     else:
@@ -35,14 +35,13 @@ def test_getXcodePosition():
 #Exercise 3 - function 3
 
 def getPatternPosition(pattern, inText):
-    pass
+    return inText.find(pattern)
 
 def test_getPatternPosition():
     # Pattern does not exist, return -1
     inText = 'Twinkle twinkle little star how I wonder what you are'
-    pattern = 'little star'
+    pattern = 'pirate'
     expected = -1
-
     actual = getPatternPosition(pattern, inText)
     if expected == actual:
         print 'Passed: getPatternPosition with pattern does not exist'
@@ -50,10 +49,9 @@ def test_getPatternPosition():
         print fmt.format(expected, actual)
 
     # Pattern at beginning of inText
-    inText = 'abc'
-    pattern = 'a'
+    inText = 'Twinkle twinkle little star how I wonder what you are'
+    pattern = 'w'
     expected = 1
-
     actual = getPatternPosition(pattern, inText)
     if expected == actual:
         print 'Passed: getPatternPosition with pattern as first character'
@@ -61,7 +59,14 @@ def test_getPatternPosition():
         print fmt.format(expected, actual)
 
     # Pattern in middle of inText
-
+    inText = 'Twinkle twinkle little star how I wonder what you are'
+    pattern = 'star'
+    expected = 23
+    actual = getPatternPosition(pattern, inText)
+    if expected == actual:
+        print 'Passed: getPatternPosition with pattern in middle of text'
+    else:
+        print fmt.format(expected, actual)
 
 if __name__ == '__main__':
     main()
