@@ -3,35 +3,39 @@ def main():
     test_getFeatureTypeFromName()
 
 def getFeatureTypeFromName(fcName):
-    return fcName
+    if fcName.endswith(('_PNT','_pnt')):
+        return 'Point'
+    if fcName.endswith(('_LIN','_lin')):
+        return 'Line'
+    if fcName.endswith(('_PLY','_ply')):
+        return 'Polygon'
+    else:
+        return "UNKNOWN"
 
 def test_getFeatureTypeFromName():
     # Returns Point
-    fcName = 'Ottawa_PNT'
-    expected = '_PNT'
-    actual = fcName.strip('Ottawa')
+    expected = 'Point'
+    actual = getFeatureTypeFromName('Ottawa_PNT')
     if expected == actual:
-        print 'Feature class = POINT'
+        print 'PASSED: Feature class = POINT'
     else:
-        print 'Feature class = UNKNOWN'
+        print 'FAILED: Expected: {}\nActual: {}'.format(expected, actual)
 
     # Returns Line
-    fcName = 'Highway_LIN'
-    expected = '_LIN'
-    actual = fcName.strip('Highway')
+    expected = 'Line'
+    actual = getFeatureTypeFromName('Ottawa_LIN')
     if expected == actual:
-        print 'Feature class = LINE'
+        print 'PASSED: Feature class = LINE'
     else:
-        print 'Feature class = UNKNOWN'
+        print 'FAILED: Expected: {}\nActual: {}'.format(expected, actual)
 
     # Returns Polygon
-    fcName = 'Ottawa_PLY'
-    expected = '_PLY'
-    actual = fcName.strip('Ottawa')
+    expected = 'Polygon'
+    actual = getFeatureTypeFromName('Ottawa_PLY')
     if expected == actual:
-        print 'Feature class = POLYGON'
+        print 'PASSED: Feature class = POLYGON'
     else:
-         print 'Feature class = UNKNOWN'
+        print 'FAILED: Expected: {}\nActual: {}'.format(expected, actual)
 
 if __name__ == '__main__':
     main()
